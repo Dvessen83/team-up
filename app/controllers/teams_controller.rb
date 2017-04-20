@@ -24,28 +24,29 @@ class TeamsController < ApplicationController
     team = params[:team]
     date = Date.new team["date(1i)"].to_i, team["date(2i)"].to_i, team["date(3i)"].to_i
     User.all.each do |user|
-      Team.create(date: date, member1: user, member2: available_user(user,date))
+      new_team = Team.create(date: date, member1: user, member2: available_user(user,date))
+      if new_team.save
+        flash[:notice] = "Teams generated for #{date}"
+      end
+
     end
-    flash[:notice] = "Teams generated for #{date}"
     redirect_to teams_path
   end
 
   private
 
-  def available_user(member1,date)
+  def available_user(member,date)
     users = User.all
-    todays_teams = Team.all.select{ |team| team.date == date }
+    todays_teams = Team.all.select{ |t| t.date == date }
 
-    available_users = users.reject{ |user|
-      user == member1 && todays_teams.each do |t|
-        t.member1
-      end &&
-      todays_teams.each do |t|
-        t.member2
+    users = users.reject{ |user| user == member }
+
+      todays_teams.each do |team|
+        users = users.reject{|user| user == team.member1}
+        users = users.reject{|user| user == team.member2}
       end
-    }
 
-    available_users.sample
+    return users.sample
   end
 
 end
