@@ -1,0 +1,10 @@
+<div class="panel panel-primary">
+  <div class="panel-heading"><%= @team.date %></div>
+
+  <div class="panel-body">
+    <p>Member 1: <%= @team.member1.email %></p>
+    <p>Member 2: <%= @team.member2.email %></p>
+  </div>
+</div>
+
+<%= link_to "Back", teams_path, class: "btn btn-default" %>
