@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-9">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        Available Teams
+      </div>
+      <div class="panel-body">
+
+        <% @teams.each do |team| %>
+        <div class="row">
+          <div class="col-md-7">
+            <h4><%= team.date %></h4>
+          </div>
+          <div class="col-md-2">
+            <%= team.member1.email %>
+          </div>
+          <div class="col-md-2 right">
+              <%= team.member2.email %>
+          </div>
+        </div>
+        <% end %>
+
+      </div>
+    </div>
+
+    <%= link_to "Create new team", new_team_path, class: "btn btn-primary" %>
+  </div>
+</div>
