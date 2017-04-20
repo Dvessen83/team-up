@@ -1,9 +1,9 @@
 Team.delete_all
 User.delete_all
 
-dennis = User.create(email: "dennis@user.com", password: "abcd1234")
-john = User.create(email: "john@user.com", password: "abcd1234")
-bill = User.create(email: "bill@user.com", password: "abcd1234")
+dennis = User.create(email: "dennis@user.com", password: "abcd1234", name: "Dennis", admin: true)
+john = User.create(email: "john@user.com", password: "abcd1234", name: "John", admin: false)
+bill = User.create(email: "bill@user.com", password: "abcd1234", name: "Bill", admin: false)
 
 team1 = Team.create(date: "22/4/2017", member1_id: 1, member2_id: 2)
 team2 = Team.create(date: "23/4/2017", member1_id: 1, member2_id: 3)
