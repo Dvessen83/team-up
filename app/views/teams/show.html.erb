@@ -2,8 +2,16 @@
   <div class="panel-heading"><%= @team.date %></div>
 
   <div class="panel-body">
-    <p>Member 1: <%= @team.member1.email %></p>
-    <p>Member 2: <%= @team.member2.email %></p>
+    <div class="col-md-4">
+      <p>Member 1: <%= @team.member1.name %></p>
+      <p>Email: <%= @team.member1.email %></p>
+      <p>Admin: <%= @team.member1.admin ? "Yes" : "No" %></p>
+    </div>
+    <div class="col-md-4 right">
+      <p>Member 2: <%= @team.member2.name %></p>
+      <p>Email: <%= @team.member2.email %></p>
+      <p>Admin: <%= @team.member2.admin ? "Yes" : "No" %></p>
+    </div>
   </div>
 </div>
 

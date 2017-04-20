@@ -9,13 +9,16 @@
         <% @teams.each do |team| %>
         <div class="row">
           <div class="col-md-7">
-            <h4><%= team.date %></h4>
+            <h4><%= link_to "Team #{team.id}", team_path(team.id) %></h4>
           </div>
           <div class="col-md-2">
-            <%= team.member1.email %>
+            <%= team.date %>
+          </div>
+          <div class="col-md-2">
+            <%= team.member1.name %>
           </div>
           <div class="col-md-2 right">
-              <%= team.member2.email %>
+              <%= team.member2.name %>
           </div>
         </div>
         <% end %>
