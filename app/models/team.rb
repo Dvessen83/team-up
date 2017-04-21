@@ -6,5 +6,11 @@ class Team < ApplicationRecord
   validates :member1, presence: true
   validates :member2, presence: true
 
+  validate :check_equal
+
+  private
+    def check_equal
+      errors.add(:member1, "can't be the same as member2") if member1 == member2
+    end
 
 end
